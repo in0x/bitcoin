@@ -7,7 +7,6 @@
 	<title> BitCoin Test </title>
 	<link rel="stylesheet" href="newStyle.css"/>
 	<script src="jquery.js" ></script>
-	<script type="text/javascript" src="app.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,400,700' rel='stylesheet' type='text/css'>
 </head>
 
@@ -22,7 +21,7 @@
 		<div class="help"><p class="helpPa">?</p></div>
 	</div>
 
-
+<!-- end of head -->
 
 	<div class="mainfield"> 
 		<div class="mainIO">
@@ -30,25 +29,30 @@
 		
 		<button class="bitSelect">
 			<span class="bitType">BTC</span>
-			<span class="dropMenu"> > </span>
+			<!-- <span class="dropMenu"> > </span> -->
+		</button>	
+
+		<!-- <input id="crypto"></input>	-->	
+
+		<button onclick="calculate()">	
+			<span class="to">to</span>
 		</button>
 
-		<span class="to">to</span>
-
-		<button>
+		<!-- <button class=".button" onclick="calculate()">
 			<span class ="dropMenu"> < </span>
 			<span class ="curSelect">EUR</span>
-		</button>
+		</button> -->
 
+		<input id="currencyMenu"></input> 
 
 		<input id="input2"></input>
-
-
+		<!-- <p id="result"></p>	-->
+		
 	</div>
 	</div>
 
 	<div class="footer"></div>
-
+	<script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>

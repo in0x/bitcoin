@@ -11,6 +11,13 @@ a{
 	font-size: 20px;
 }
 
+#result{
+	font-size: 400%;
+	margin-left: 32%;
+	margin-top: 50px;
+	color: rgba(238, 238, 238, 1);
+}
+
 a:link, a:active, a:hover, a:visited{
 	color:	black;
 }
@@ -75,7 +82,7 @@ a:link, a:active, a:hover, a:visited{
 }
 
 .mainfield{
-	width: 900px;
+	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 200px;
@@ -89,22 +96,29 @@ a:link, a:active, a:hover, a:visited{
 	margin: 0 auto;
 }
 
-button{
+button, #crypto, #currencyMenu{
 	padding: 10px;
 	border: none;
 	background-color: white;
-	color: black;
-	font-family: lato;
+		font-family: lato;
 	min-height: 68px;
 	min-width: 70px;
 	margin-left: 10px;
 	margin-right: 10px;
+	background-color: #FC7072;
+	border: solid white 3px;
+	width: 13%; 
+	transition: background 0.1s ease-out
 }
 
 
 .bitType, .curSelect, .to, .dropMenu{
 	font-size: 30px;
 	color: #eee;
+}
+
+.bitSelect{
+	width: 13%;
 }
 
 input{
@@ -121,11 +135,6 @@ input{
 }
 
 
-button{
-	background-color: #FC7072;
-	border: solid white 3px;
-	transition: background 0.8s ease-out;
-}
 
 input:focus{
 	outline: none;	
@@ -136,7 +145,7 @@ input:focus{
 
 button:focus{
 	outline: none;
-	background-color: rgba(238, 238, 238, 0.4);
+	background-color: rgba(238, 238, 238, 0.4);	
 }
 
 input{
