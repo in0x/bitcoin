@@ -1,43 +1,44 @@
-	var prices,
-	 	result,
-	 	currencyCode;
 
-	
-	$.getJSON( "prices.json", function(data) {		//Gets the content of a grammatically correct JSON File and returns 
-		prices = data;								//it as a JS Object 
-	});												//Object Data{Key USD(contains Object){Key "7d"(contains value): 300}}
-	
-	function getInputValuesString(){				// Returns the input value for the currency to convert
+var prices,
+  result,
+  currencyCode;
 
-		currencyCode = document.getElementById('currencyMenu').value;
 
-		currencyCode = currencyCode.toUpperCase();		// TODO: Trim Strings (whitespace)
+$.getJSON("prices.json", function(data) { //Gets the content of a grammatically correct JSON File and returns 
+  prices = data; //it as a JS Object 
+}); //Object Data{Key USD(contains Object){Key "7d"(contains value): 300}}
 
-		return currencyCode;
-	}
+function getInputValuesString() { // Returns the input value for the currency to convert
 
-	function calculate(){
-		
-		var curCode = getInputValuesString();		//Get CurrencyCode from User input TODO: verify if valid currency code
+  currencyCode = document.getElementById('currencyMenu').value;
 
-		var currency = prices[curCode]["7d"];		//Position 
+  currencyCode = currencyCode.toUpperCase(); // TODO: Trim Strings (whitespace)
 
-		var bit = document.getElementById('input1').value;
+  return currencyCode;
+}
 
-		currency = parseFloat(currency);
-		bit = parseFloat(bit);
+function calculate() {
 
-		result = bit * currency;
-		result = result.toFixed(3);
+  var curCode = getInputValuesString(); //Get CurrencyCode from User input TODO: verify if valid currency code
 
-		console.log(result);
-			displayResult();
-	}
+  var currency = prices[curCode]["7d"]; //Position 
 
-	function displayResult(){
-		$("#input2").val(result);
-		document.getElementById("input2").focus();
-	}
+  var bit = document.getElementById('input1').value;
+
+  currency = parseFloat(currency);
+  bit = parseFloat(bit);
+
+  result = bit * currency;
+  result = result.toFixed(3);
+
+  console.log(result);
+  displayResult();
+}
+
+function displayResult() {
+  $("#input2").val(result);
+  document.getElementById("input2").focus();
+}
 
 
 
