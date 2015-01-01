@@ -11,6 +11,18 @@ a{
 	font-size: 20px;
 }
 
+select, select:focus{
+	margin-left:59.5%;
+	width: 13%;
+	height: 40%;
+	background: transparent;
+	color: white;
+	border: solid #efefef 3px;
+	margin-top: -4px;
+	outline: none;
+	font-size: 16px
+}
+
 #result{
 	font-size: 400%;
 	margin-left: 32%;
@@ -22,7 +34,7 @@ a:link, a:active, a:hover, a:visited{
 	color:	black;
 }
 
-.nameDiv, .titleDiv, .help{
+.titleDiv, .help{
 	margin-top: 10px;
 
 }
@@ -36,7 +48,7 @@ a:link, a:active, a:hover, a:visited{
 	height: 50px;
 	width: 10%;
 	display: inline-block;
-
+	margin-top: -9px;
 	margin-left: 10px;
 }
 
