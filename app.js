@@ -1,30 +1,15 @@
 var allPrices = {}
 
-function getInputValuesString() { // Returns the input value for the currency to convert
+// Returns the input value for the currency to convert
+function getInputValuesString() { 
   return $('#currencyMenu').val().toUpperCase();
 }
 
-function getSelectValue(){
-  //return $('#dropDown option:selected').text().toUpperCase();
-
-  if($('#dropDown option:selected').val() !== "0") 
-  {
-    return $('#dropDown option:selected').val().toUpperCase();
-  }
-}
-  
 
 function calculate() {
   var curCode = getInputValuesString(); //Get CurrencyCode from User input 
-  var code = "-1";
-  code = getSelectValue();
-  console.log(curCode);
-  if(code != "-1"){
-    curCode = code;
-  }
-  var currency = allPrices[curCode]['last']; //Position 
+  var currency = allPrices[curCode]['last']; 
   var bit = $('#input1').val();
-
   currency = parseFloat(currency);
   bit = parseFloat(bit);
   var result = bit * currency;
@@ -53,8 +38,7 @@ $(document).ready(function(){
   })
   .done(function(){
     console.log("success");
-  }); //Object Data{Key USD(contains Object){Key '7d'(contains value): 300}}
-})
+  }); })
 
 //TODO: Fix center positioning of elements to prevent elements falling out of center on resize
 /*
