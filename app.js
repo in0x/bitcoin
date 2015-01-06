@@ -1,80 +1,123 @@
-var allPrices = {}
-var allCodes = []
 
-// Returns the input value for the currency to convert
-function GetInputValuesString() 
-{ 
-  return $('#currencyMenu').val().toUpperCase();
-}
-
-
-function Calculate() 
-{
-  var curCode = GetInputValuesString(); //Get CurrencyCode from User input 
-  var currency = allPrices[curCode]['last']; 
-  var bit = $('#input1').val();
-  currency = parseFloat(currency);
-  bit = parseFloat(bit);
-  var result = bit * currency;
-  result = result.toFixed(3);
-
-  DisplayResult(result);
-}
-
-function DisplayResult(result) 
-{
-  var ipt2 = $('#input2')
-  ipt2.val(result);
-}
-
-function GetAllCodes()
-{
-  var arrayPos = 0;
-  for(var key in allPrices)
-  {
-    if(allPrices.hasOwnProperty(key))
-    {
-      allCodes[arrayPos] = key;
-      arrayPos++;
-    }
-  }
-}
-
-function WriteDataList()
-{
-  for(i = 0; i < allCodes.length; i++)
-  {
-    $('#currencies').append('<option value= ' + allCodes[i] + '>');
-  }
-}
-
+  
 $(document).ready(function()
 {
   console.log('ready event')
-  $.getJSON('https://blockchain.info/de/ticker?cors=true', function(data) 
-  { //Gets the content of a grammatically correct JSON File and returns 
-    allPrices = data; //it as a JS Object
-    GetAllCodes();
-    WriteDataList();
+  HideElement();
+  var isLeft = false;
+  var allPrices = {}
+  var allCodes = []
+
+  // Returns the input value for the currency to convert
+  function GetInputValuesString() 
+  {  
+    return $('#currencyMenu').val().toUpperCase();
+  }
+
+
+  function Calculate() 
+  {
+    var curCode = GetInputValuesString(); //Get CurrencyCode from User input 
+    var currency = allPrices[curCode]['last']; 
+    var bit = $('#input1').val();
+    currency = parseFloat(currency);
+    bit = parseFloat(bit);
+    var result = bit * currency;
+    result = result.toFixed(3);
+
+    DisplayResult(result);
+  }
+
+  function DisplayResult(result) 
+  {
+    var ipt2 = $('#input2')
+    ipt2.val(result);
+  }
+
+  function GetAllCodes()
+  {
+    var arrayPos = 0;
+    for(var key in allPrices)
+    {
+      if(allPrices.hasOwnProperty(key))
+      {
+        allCodes[arrayPos] = key;
+        arrayPos++;
+      }
+    }
+  }
+
+  function WriteDataList()
+  {
+    for(i = 0; i < allCodes.length; i++)
+    {
+      $('#currencies').append('<option value= ' + allCodes[i] + '>');
+    }
+  }
+
+  function TestArray()
+  {
+    for(var i = 0; i < allCodes.length; i++) console.log(allCodes[i]);
+  }
+
+  function HideElement()
+  {
+    $(".helpMenu").hide();
+  }
+
+  function TestClick()
+  {
+    $( ".helpPa" ).click( function( event ) {
+    if ( event.originalEvent === undefined ) {
+        console.log( 'not human' )
+    } else {
+        console.log( 'human' );
+    }
+    });
+  }
+
+  $('.helpPa').click(function(){
+      $('.helpMenu').toggle(400);
+      if (!(isLeft))
+      {
+        $(this).animate({"left": "-248px"}, "medium");
+
+        isLeft = true;
+      }
+      else
+      {
+        $(this).animate({"left": "0px"}, "medium");;
+
+        isLeft = false;
+      }
+  });
+  
+  $('#currencyMenu').focus(function(){
+      $(this).removeAttr('placeholder');
+    });
+   
     $('#currencyMenu').change(Calculate);
     $('#currencyMenu').keydown(Calculate);
     $('.btnTo').click(Calculate)
+
+  $.getJSON('https://blockchain.info/de/ticker?cors=true', function(data) 
+  { 
+    allPrices = data; 
+    GetAllCodes();
+    WriteDataList();
   })
-  .always(function(){
-    console.log("complete");
-  })
-  .fail(function(){
-    console.log("error");
-  })
-  .done(function(){
-    console.log("success");
-  }); 
+    .always(function(){
+      console.log("complete");
+    })
+    .fail(function(){
+      console.log("error");
+    })
+    .done(function(){
+      console.log("success");
+    }); 
 })
 
-function TestArray()
-{
-  for(var i = 0; i < allCodes.length; i++) console.log(allCodes[i]);
-}
+
 //TODO: Fix center positioning of elements to prevent elements falling out of center on resize
 /*
   $('input').change(function() {

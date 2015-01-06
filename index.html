@@ -17,7 +17,7 @@
 
 		<div class="titleDiv"><p class="title"> BitCoin<em id="fat">Calc</em></p></div>
 
-		<div class="help"><p class="helpPa">?</p></div>
+		<div class="help"><button class="helpPa" id="helpPa">?</button></div>
 	</div>
 
 <!-- end of head -->
@@ -34,7 +34,7 @@
 		<!-- <input id="crypto"></input>	-->	
 
 		<button class="btnTo">
-			<span class="to">to</span>
+			<span class="to">=</span>
 		</button>
 
 		<!-- <button class=".button" onclick="calculate()">
@@ -42,14 +42,14 @@
 			<span class ="curSelect">EUR</span>
 		</button> -->
 
-		<input id="currencyMenu" list="currencies">
+		<input id="currencyMenu" list="currencies" placeholder="e.g. eur..">
 			<datalist id="currencies">
-				<option value="EUR" id="firstList">
-				<option value="GBP">
+				<option value="" id="firstList">
+				<!--<option value="GBP">
 				<option value="USD">
 				<option value="SEK">
 				<option value="JPY">
-				<option value="CNY">
+				<option value="CNY"> -->
 			</datalist>
 
 		</input> 
@@ -58,6 +58,33 @@
 		<!-- <p id="result"></p>	-->		
 	</div>
 	</div>
+
+	<div class="helpMenu" id="mainHelp">
+		<div id="text">
+			<h1 class="helpTitle">BitCoinCalc</h1>
+			<h2 class="helpSub">by Philipp Welsch</h2>
+			<p> Hi there curious person! This website is supposed to quickly help you calculate the
+				value of your Bitcoins.<br><br> The prices are based on <a href="https://blockchain.info/de/ticker" id="blockLink">this</a>. Many thanks to <a href="http://www.blockchain.info">blockchain</a> for providing 
+				their api for free. <br><br>Click on my name to the left to find out more about this project and my work.</p>
+		</div>
+	</div>
+
+	<div class="helpMenu" id="buttonMenu">
+		<p class="helpTextAlt">Click me to calculate!</p>
+	</div>
+
+	<div class="helpMenu" id="curMenu">
+		<p class="helpText">Use me to select the Currency to convert to!</p>
+	</div>
+
+	<div class="helpMenu" id="bitMenu">
+		<p class="helpText">I'm the amount of BitCoins you have!</p>
+	</div>
+
+	<div class="helpMenu" id="resultMenu">
+		<p class="helpTextAlt">And I'm your result!</p>
+	</div>
+
 
 	<div class="footer"></div>
 	<script type="text/javascript" src="jquery.js" ></script>
