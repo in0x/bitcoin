@@ -2,6 +2,8 @@
   
 $(document).ready(function()
 {
+  $("#input1").focus();
+  $("#powered").hide();
   console.log('ready event')
   HideElement();
   var isLeft = false;
@@ -17,6 +19,11 @@ $(document).ready(function()
 
   function Calculate() 
   {
+    if(infoDisplayed) 
+    {
+      $("#infoOverlay").fadeOut(400);
+      $("#powered").fadeOut(400);
+    }
     var curCode = GetInputValuesString(); //Get CurrencyCode from User input 
     var currency = allPrices[curCode]['last']; 
     var bit = $('#input1').val();
@@ -26,12 +33,30 @@ $(document).ready(function()
     result = result.toFixed(3);
 
     DisplayResult(result);
+    DisplayInfo(currency);
+    var infoDisplayed = true;
+    $("#infoOverlay").fadeIn(400);
+    $("#powered").fadeIn(400);
+  }
+
+  function FetchFromData(code)
+  {
+    return allPrices[curCode][code];
   }
 
   function DisplayResult(result) 
   {
-    var ipt2 = $('#input2')
+    var ipt2 = $('#input2');
     ipt2.val(result);
+  }
+
+  function DisplayInfo(currency)
+  {
+    curCode = GetInputValuesString();
+    $("#curCode").html(FetchFromData("symbol"));
+    $("#last").html("Last: " + currency);
+    $("#buy").html("Buy: " + FetchFromData("buy"));
+    $("#sell").html("Sell: " + FetchFromData("sell"));
   }
 
   function GetAllCodes()
@@ -76,7 +101,8 @@ $(document).ready(function()
     });
   }
 
-  $('.helpPa').click(function(){
+  $('.helpPa').click(function()
+  {
       $('.helpMenu').toggle(400);
       if (!(isLeft))
       {
@@ -92,13 +118,15 @@ $(document).ready(function()
       }
   });
   
-  $('#currencyMenu').focus(function(){
+  $('#currencyMenu').focus(function()
+  {
       $(this).removeAttr('placeholder');
     });
    
     $('#currencyMenu').change(Calculate);
     $('#currencyMenu').keydown(Calculate);
     $('.btnTo').click(Calculate)
+
 
   $.getJSON('https://blockchain.info/de/ticker?cors=true', function(data) 
   { 

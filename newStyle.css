@@ -145,12 +145,10 @@ input{
 	font-size: 30px;
     box-sizing:border-box;
     -moz-box-sizing:border-box;
-
 }
 
 .to{
 	color: rgba(238, 238, 238, 0.7);
-
 }
 
 input::-webkit-calendar-picker-indicator {
@@ -299,6 +297,32 @@ img{
 	margin-top: 20%;
 }
 
+#curCode, #last, #buy, #sell{
+	display: inline-block;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+#infoOverlay{
+	color: white;
+	position: absolute;
+	left: 29%;
+	top: 65%;
+	font-size: 20px;
+	width: 70%;
+}
+
+#powered{
+	color: white;
+	position: absolute;
+	left: 39%;
+	top: 70%;
+	font-size: 20px;
+}
+
+#poweredLink{
+	color: white;
+}
 
 
 
