@@ -1,7 +1,9 @@
 
-  
+//entry point  
 $(document).ready(function()
 {
+  //focus first input, hide elements, ready message
+  //assign important variables
   $("#input1").focus();
   $("#powered").hide();
   console.log('ready event')
@@ -10,13 +12,14 @@ $(document).ready(function()
   var allPrices = {}
   var allCodes = []
 
-  // Returns the input value for the currency to convert
+  // Returns the input value for the currency to convert to
   function GetInputValuesString() 
   {  
     return $('#currencyMenu').val().toUpperCase();
   }
 
-
+  //Gets 'last' price from data, and calculates result based on user input
+  //also manages info overlay
   function Calculate() 
   {
     if(infoDisplayed) 
@@ -39,17 +42,20 @@ $(document).ready(function()
     $("#powered").fadeIn(400);
   }
 
+  //help function for DisplayInfo, gets certain value from ticker data
   function FetchFromData(code)
   {
     return allPrices[curCode][code];
   }
 
+  //for displaying calculate results
   function DisplayResult(result) 
   {
     var ipt2 = $('#input2');
     ipt2.val(result);
   }
 
+  //Displays the complete key value pairing for the users choice as an overlay
   function DisplayInfo(currency)
   {
     curCode = GetInputValuesString();
@@ -59,6 +65,7 @@ $(document).ready(function()
     $("#sell").html("Sell: " + FetchFromData("sell"));
   }
 
+  //Returns all value codes from ticker data as an array
   function GetAllCodes()
   {
     var arrayPos = 0;
@@ -72,6 +79,7 @@ $(document).ready(function()
     }
   }
 
+  //Writes data list from array into html, for laziness and future-proofing
   function WriteDataList()
   {
     for(i = 0; i < allCodes.length; i++)
@@ -101,6 +109,7 @@ $(document).ready(function()
     });
   }
 
+  //Shifts "?" button left and back on click
   $('.helpPa').click(function()
   {
       $('.helpMenu').toggle(400);
@@ -118,16 +127,19 @@ $(document).ready(function()
       }
   });
   
+  //removes placeholder value for currency
   $('#currencyMenu').focus(function()
   {
       $(this).removeAttr('placeholder');
-    });
+  });
    
     $('#currencyMenu').change(Calculate);
     $('#currencyMenu').keydown(Calculate);
     $('.btnTo').click(Calculate)
 
-
+  //Where the magic happens
+  //Issues CORS-Request to provided URL, gets its data and returns it as an object
+  //Then writes datalist into html for user input prediction
   $.getJSON('https://blockchain.info/de/ticker?cors=true', function(data) 
   { 
     allPrices = data; 
@@ -145,7 +157,7 @@ $(document).ready(function()
     }); 
 })
 
-
+// !!! Depreciated code !!! Was supposed to adjust input width according to content
 //TODO: Fix center positioning of elements to prevent elements falling out of center on resize
 /*
   $('input').change(function() {
